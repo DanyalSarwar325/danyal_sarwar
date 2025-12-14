@@ -140,7 +140,7 @@ export function PasswordSignUpForm({
 
         <Button
           data-test={'auth-submit-button'}
-          className={'w-full'}
+          className={'w-full bg-blue-600 hover:bg-blue-700 text-white'}
           type="submit"
           disabled={loading}
         >

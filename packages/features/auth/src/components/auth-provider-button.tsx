@@ -15,7 +15,6 @@ export function AuthProviderButton({
       className={'flex w-full space-x-2 text-center'}
       data-provider={providerId}
       data-test={'auth-provider-button'}
-      variant={'outline'}
       onClick={onClick}
     >
       <OauthProviderLogoImage providerId={providerId} />

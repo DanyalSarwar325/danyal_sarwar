@@ -45,6 +45,7 @@ export function SiteHeaderAccountSection({
   return <SuspendedPersonalAccountDropdown user={user} />;
 }
 
+
 function SuspendedPersonalAccountDropdown(props: { user: JwtPayload | null }) {
   const signOut = useSignOut();
   const user = useUser(props.user);

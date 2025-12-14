@@ -7,6 +7,8 @@ import { RootProviders } from '~/components/root-providers';
 import { heading, sans } from '~/lib/fonts';
 import { createI18nServerInstance } from '~/lib/i18n/i18n.server';
 import { generateRootMetadata } from '~/lib/root-metdata';
+import {ApolloProviderWrapper} from '~/lib/apollo-provider';
+
 
 import '../styles/globals.css';
 
@@ -22,9 +24,12 @@ export default async function RootLayout({
   return (
     <html lang={language} className={className}>
       <body>
-        <RootProviders theme={theme} lang={language}>
-          {children}
-        </RootProviders>
+        {/* ✅ Apollo must wrap client-side providers */}
+        <ApolloProviderWrapper>
+          <RootProviders theme={theme} lang={language}>
+            {children}
+          </RootProviders>
+        </ApolloProviderWrapper>
 
         <Toaster richColors={true} theme={theme} position="top-center" />
       </body>
@@ -39,7 +44,6 @@ function getClassName(theme?: string) {
   const font = [sans.variable, heading.variable].reduce<string[]>(
     (acc, curr) => {
       if (acc.includes(curr)) return acc;
-
       return [...acc, curr];
     },
     [],

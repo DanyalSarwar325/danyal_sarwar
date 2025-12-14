@@ -1,55 +1,175 @@
-import { Footer } from '@kit/ui/marketing';
+'use client';
+
+import Link from 'next/link';
 import { Trans } from '@kit/ui/trans';
+import { Twitter, Github, Linkedin, Mail } from 'lucide-react';
 
 import { AppLogo } from '~/components/app-logo';
-import appConfig from '~/config/app.config';
 
 export function SiteFooter() {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      name: 'Twitter',
+      icon: Twitter,
+      href: '#',
+    },
+    {
+      name: 'GitHub',
+      icon: Github,
+      href: '#',
+    },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      href: '#',
+    },
+    {
+      name: 'Email',
+      icon: Mail,
+      href: '#',
+    },
+  ];
+
   return (
-    <Footer
-      logo={<AppLogo className="w-[85px] md:w-[95px]" />}
-      description={<Trans i18nKey="marketing:footerDescription" />}
-      copyright={
-        <Trans
-          i18nKey="marketing:copyright"
-          values={{
-            product: appConfig.name,
-            year: new Date().getFullYear(),
-          }}
-        />
-      }
-      sections={[
-        {
-          heading: 'Get Started',
-          links: [
-            {
-              href: '/auth/sign-in',
-              label: <Trans i18nKey="auth:signIn" />,
-            },
-            {
-              href: '/auth/sign-up',
-              label: <Trans i18nKey="auth:signUp" />,
-            },
-          ],
-        },
-        {
-          heading: <Trans i18nKey="marketing:legal" />,
-          links: [
-            {
-              href: '/terms-of-service',
-              label: <Trans i18nKey="marketing:termsOfService" />,
-            },
-            {
-              href: '/privacy-policy',
-              label: <Trans i18nKey="marketing:privacyPolicy" />,
-            },
-            {
-              href: '/cookie-policy',
-              label: <Trans i18nKey="marketing:cookiePolicy" />,
-            },
-          ],
-        },
-      ]}
-    />
+    <footer className="relative mt-auto w-full border-t border-border bg-background">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-5">
+            <div className="mb-4">
+              <AppLogo className="w-[85px] md:w-[95px]" />
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-md">
+              <Trans i18nKey="marketing:footerDescription" />
+            </p>
+            
+            {/* Social Links */}
+            <div className="flex items-center gap-3 mb-6">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    aria-label={social.name}
+                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card transition-colors hover:border-foreground/20 hover:bg-muted"
+                  >
+                    <Icon className="h-4 w-4 text-muted-foreground" />
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Copyright */}
+            <p className="text-xs text-muted-foreground">
+              © {currentYear} TechBlog. All rights reserved.
+            </p>
+          </div>
+
+          {/* Links Sections */}
+          <div className="lg:col-span-7 grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {/* Get Started Section */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold text-foreground">
+                Get Started
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/auth/sign-in"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Trans i18nKey="auth:signIn" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/auth/sign-up"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Trans i18nKey="auth:signUp" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal Section */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold text-foreground">
+                <Trans i18nKey="marketing:legal" />
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/terms-of-service"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Trans i18nKey="marketing:termsOfService" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Trans i18nKey="marketing:privacyPolicy" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/cookie-policy"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Trans i18nKey="marketing:cookiePolicy" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Blog Section */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold text-foreground">
+                Blog
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Latest Posts
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/add-post"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Write Article
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-border">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-xs text-muted-foreground text-center sm:text-left">
+              Made with passion for sharing knowledge and stories.
+            </p>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span>Powered by</span>
+              <span className="font-semibold text-foreground">
+                TechBlog
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
