@@ -53,7 +53,7 @@ In Google Cloud Console:
 
 Paste the Client ID and Client Secret back into Supabase Google provider settings.
 
-## Features
+## Bonus Features
 - Zod validation: strict runtime validation for forms and API responses.
 - Incremental Static Regeneration (ISR): fast pages with periodic revalidation.
 - React Hot Toast: friendly notifications for auth, validation, and API errors.
