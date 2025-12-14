@@ -12,8 +12,8 @@ const getClassName = (path: string, currentPathName: string) => {
   return cn(
     `inline-flex w-max text-sm font-medium transition-colors duration-300`,
     {
-      'dark:text-gray-300 dark:hover:text-white': !isActive,
-      'text-current dark:text-white': isActive,
+      'text-white hover:text-blue-100': !isActive,
+      'text-white font-semibold': isActive,
     },
   );
 };

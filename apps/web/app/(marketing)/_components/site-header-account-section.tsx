@@ -74,14 +74,14 @@ function AuthButtons() {
           <ModeToggle />
         </If>
 
-        <Button asChild variant={'ghost'}>
+        <Button asChild variant={'ghost'} className="text-white hover:bg-blue-700 hover:text-white">
           <Link href={pathsConfig.auth.signIn}>
             <Trans i18nKey={'auth:signIn'} />
           </Link>
         </Button>
       </div>
 
-      <Button asChild className="group" variant={'default'}>
+      <Button asChild className="group bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700" variant={'default'}>
         <Link href={pathsConfig.auth.signUp}>
           <Trans i18nKey={'auth:signUp'} />
         </Link>

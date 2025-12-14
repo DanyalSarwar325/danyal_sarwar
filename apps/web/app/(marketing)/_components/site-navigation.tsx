@@ -75,7 +75,7 @@ function MobileDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger aria-label={'Open Menu'}>
-        <Menu className={'h-8 w-8'} />
+        <Menu className={'h-8 w-8 text-white'} />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className={'w-full'}>

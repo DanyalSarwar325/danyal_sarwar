@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 
-import { Toaster } from '@kit/ui/sonner';
+import { Toaster } from 'react-hot-toast';
 import { cn } from '@kit/ui/utils';
 
 import { RootProviders } from '~/components/root-providers';
@@ -31,7 +31,30 @@ export default async function RootLayout({
           </RootProviders>
         </ApolloProviderWrapper>
 
-        <Toaster richColors={true} theme={theme} position="top-center" />
+        <Toaster 
+          position="top-center"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: 'var(--background)',
+              color: 'var(--foreground)',
+              border: '1px solid var(--border)',
+            },
+            success: {
+              duration: 1000,
+              iconTheme: {
+                primary: '#10b981',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#ef4444',
+                secondary: '#fff',
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );

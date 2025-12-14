@@ -82,7 +82,7 @@ export function PersonalAccountDropdown({
       >
         <ProfileAvatar
           className={'rounded-md'}
-          fallbackClassName={'rounded-md border'}
+          fallbackClassName={'rounded-md border text-black'}
           displayName={displayName ?? user?.email ?? ''}
           pictureUrl={personalAccountData?.data?.picture_url}
         />

@@ -13,22 +13,22 @@ export const generateRootMetadata = async (): Promise<Metadata> => {
   const csrfToken = headersStore.get('x-csrf-token') ?? '';
 
   return {
-    title: appConfig.title,
+    title: 'Tech Blog',
     description: appConfig.description,
     metadataBase: new URL(appConfig.url),
-    applicationName: appConfig.name,
+    applicationName: 'Tech Blog',
     other: {
       'csrf-token': csrfToken,
     },
     openGraph: {
       url: appConfig.url,
-      siteName: appConfig.name,
-      title: appConfig.title,
+      siteName: 'Tech Blog',
+      title: 'Tech Blog',
       description: appConfig.description,
     },
     twitter: {
       card: 'summary_large_image',
-      title: appConfig.title,
+      title: 'Tech Blog',
       description: appConfig.description,
     },
     icons: {
