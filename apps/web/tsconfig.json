@@ -8,6 +8,11 @@
       "~/components/*": ["./components/*"],
       "~/lib/*": ["./lib/*"]
     },
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "useUnknownInCatchVariables": true,
     "plugins": [
       {
         "name": "next"
