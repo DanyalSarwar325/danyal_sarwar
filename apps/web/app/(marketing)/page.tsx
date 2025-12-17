@@ -1,5 +1,5 @@
-import { getSupabaseServerClient } from '@kit/supabase/server-client';
-
+// import { getSupabaseServerClient } from '@kit/supabase/server-client';
+import {supabase} from '../lib/createClient';
 import { HomepageHero } from './_components/homepage-hero';
 import { PostsList } from './_components/posts-list';
 
@@ -16,10 +16,11 @@ interface HomePageProps {
 }
 
 // Enable ISR - revalidate every 60 seconds
-export const revalidate = 60;
+// export const revalidate = 60;
 
 async function getPosts(page: number = 1, postsPerPage: number = 5) {
-  const supabase = getSupabaseServerClient();
+  
+  
   
   const from = (page - 1) * postsPerPage;
   const to = from + postsPerPage - 1;

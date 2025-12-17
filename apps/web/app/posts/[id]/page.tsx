@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Card, CardContent } from '@kit/ui/card';
 import { Button } from '@kit/ui/button';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
-import { getSupabaseServerClient } from '@kit/supabase/server-client';
+
+import {supabase} from '../../lib/createClient';
 
 interface Post {
   id: string;
@@ -21,7 +22,7 @@ interface PostPageProps {
 export const revalidate = 60;
 
 async function getPost(id: string): Promise<Post | null> {
-  const supabase = getSupabaseServerClient();
+  
 
   // Use any type since posts table is not in the generated types
   const { data, error } = await (supabase as any)
@@ -39,7 +40,8 @@ async function getPost(id: string): Promise<Post | null> {
 
 // Generate static params for the most recent posts
 export async function generateStaticParams() {
-  const supabase = getSupabaseServerClient();
+
+  
 
   // Fetch the most recent 20 posts to pre-render
   // Use any type since posts table is not in the generated types

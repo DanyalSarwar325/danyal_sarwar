@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@kit/ui/button';
 import { Plus, BookOpen, ImageIcon } from 'lucide-react';
 import { useUser } from '@kit/supabase/hooks/use-user';
-import { toast } from '@kit/ui/sonner';
+// import { toast } from '@kit/ui/sonner';
+import toast from 'react-hot-toast';
 
 export function HomepageHero() {
   const router = useRouter();
@@ -15,14 +16,15 @@ export function HomepageHero() {
 
   const handleAddBlog = () => {
     if (isLoading) {
-      return;
+       toast.loading('Checking login status...');
     }
 
-    if (user) {
-      router.push('/add-post');
-    } else {
+    if (!user) {
       toast.error('Please log in');
       router.push('/auth/sign-in');
+    } else {
+      
+      router.push('/add-post');
     }
   };
 
@@ -61,15 +63,17 @@ export function HomepageHero() {
                 <BookOpen className="w-5 h-5 mr-2" />
                 View Blogs
               </Button>
-              <Button
-                onClick={handleAddBlog}
-                size="lg"
-                variant="outline"
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/20 px-6 py-5 text-base font-medium rounded-lg transition-colors duration-200 cursor-pointer"
-              >
-                <Plus className="w-5 h-5 mr-2" />
-                Add Blog
-              </Button>
+             <Button
+  onClick={handleAddBlog}
+  size="lg"
+  variant="outline"
+  disabled={isLoading}
+  className="border-2 border-blue-600 text-blue-600 disabled:opacity-50"
+>
+  <Plus className="w-5 h-5 mr-2" />
+  {isLoading ? 'Checking...' : 'Add Blog'}
+</Button>
+
             </div>
           </div>
 
